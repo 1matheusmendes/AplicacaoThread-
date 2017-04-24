@@ -10,7 +10,19 @@ import java.util.ArrayList;
 public class MainThread extends Thread {
     
     private boolean rodando;
-    ArrayList<Tarefa> ListaTarefas = new ArrayList<> ();
+    private static MainThread instance;
+    private ArrayList<Tarefa> listaTarefas;
+    
+    private MainThread(){       
+        this.listaTarefas = new ArrayList<>();
+    }
+    
+    // Retorna uma instancia unica da classe. (Singleton)
+    public static MainThread getInstance(){
+        if (instance == null)
+            instance = new MainThread();
+        return instance;
+    }
 
     public boolean isRodando() {
         return rodando;
@@ -21,19 +33,27 @@ public class MainThread extends Thread {
     }
 
     public ArrayList<Tarefa> getListaTarefas() {
-        return ListaTarefas;
+        return listaTarefas;
     }
 
     public void setListaTarefas(ArrayList<Tarefa> ListaTarefas) {
-        this.ListaTarefas = ListaTarefas;
+        this.listaTarefas = ListaTarefas;
     }
     
     public void adicionarTarefa(Tarefa terefa){
-        
+        this.listaTarefas.add(terefa);
+    }
+    
+    public void removerTarefa(Tarefa tarefa){
+        this.listaTarefas.remove(tarefa);
     }
     
     @Override
     public void run(){
+        
+        while (rodando){
+            
+        }
         
     }
   
