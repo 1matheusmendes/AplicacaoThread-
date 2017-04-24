@@ -13,8 +13,13 @@ import java.util.ArrayList;
  */
 public class Agenda{
     
-    ArrayList<Pessoa> listaPessoas = new ArrayList<> ();
-    ArrayList<Tarefa> listaTarefas = new ArrayList<> ();
+    ArrayList<Pessoa> listaPessoas;
+    ArrayList<Tarefa> listaTarefas;
+    
+    public Agenda(){
+        this.listaPessoas = new ArrayList<Pessoa>();
+        this.listaTarefas = new ArrayList<Tarefa>();
+    }
 
     public ArrayList<Pessoa> getListaPessoas() {
         return listaPessoas;
@@ -32,19 +37,20 @@ public class Agenda{
         this.listaTarefas = listaTarefas;
     }
     
-    public void adicionarPessoas(Pessoa Pessoas){
+    public void adicionarPessoas(Pessoa pessoa){
+        this.listaPessoas.add(pessoa);
     }
     
-    public void adicionarTarefa(Tarefa Tarefa){    
+    public void adicionarTarefa(Tarefa tarefa){    
     }
     
-    public void removerPessoa(Pessoa Pessoas){
+    public void removerPessoa(Pessoa pessoa){
     }
     
-    public void removerTareda (Tarefa Tarefa){
+    public void removerTareda (Tarefa tarefa){
     }
     
-    public void atribuirTarefa(Pessoa Pessoa,Tarefa Tarefa){
+    public void atribuirTarefa(Pessoa pessoa ,Tarefa tarefa){
         
     }
     
