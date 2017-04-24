@@ -11,10 +11,10 @@ import java.util.ArrayList;
  *
  * @author MrMurdoc
  */
-public class MainThread extends java.lang.Thread{
+public class MainThread {
     
     private boolean rodando;
-    ArrayList<Long> ListaTarefas = new ArrayList<> ();
+    ArrayList<Tarefa> ListaTarefas = new ArrayList<> ();
 
     public boolean isRodando() {
         return rodando;
@@ -24,11 +24,11 @@ public class MainThread extends java.lang.Thread{
         this.rodando = rodando;
     }
 
-    public ArrayList<Long> getListaTarefas() {
+    public ArrayList<Tarefa> getListaTarefas() {
         return ListaTarefas;
     }
 
-    public void setListaTarefas(ArrayList<Long> ListaTarefas) {
+    public void setListaTarefas(ArrayList<Tarefa> ListaTarefas) {
         this.ListaTarefas = ListaTarefas;
     }
     

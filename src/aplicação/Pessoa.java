@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Pessoa {
     
     private String nome;
-    private ArrayList<Long> tarefas = new ArrayList<>();
+    private ArrayList<Tarefa> tarefas = new ArrayList<>();
 
     public String getNome() {
         return nome;
@@ -24,11 +24,11 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public ArrayList<Long> getTarefas() {
+    public ArrayList<Tarefa> getTarefas() {
         return tarefas;
     }
 
-    public void setTarefas(ArrayList<Long> tarefas) {
+    public void setTarefas(ArrayList<Tarefa> tarefas) {
         this.tarefas = tarefas;
     }
     

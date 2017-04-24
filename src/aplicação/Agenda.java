@@ -13,22 +13,22 @@ import java.util.ArrayList;
  */
 public class Agenda{
     
-    ArrayList<Long> listaPessoas = new ArrayList<> ();
-    ArrayList<Long> listaTarefas = new ArrayList<> ();
+    ArrayList<Pessoa> listaPessoas = new ArrayList<> ();
+    ArrayList<Tarefa> listaTarefas = new ArrayList<> ();
 
-    public ArrayList<Long> getListaPessoas() {
+    public ArrayList<Pessoa> getListaPessoas() {
         return listaPessoas;
     }
 
-    public void setListaPessoas(ArrayList<Long> listaPessoas) {
+    public void setListaPessoas(ArrayList<Pessoa> listaPessoas) {
         this.listaPessoas = listaPessoas;
     }
 
-    public ArrayList<Long> getListaTarefas() {
+    public ArrayList<Tarefa> getListaTarefas() {
         return listaTarefas;
     }
 
-    public void setListaTarefas(ArrayList<Long> listaTarefas) {
+    public void setListaTarefas(ArrayList<Tarefa> listaTarefas) {
         this.listaTarefas = listaTarefas;
     }
     
