@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aplicação;
 
 import java.util.ArrayList;
@@ -10,14 +5,19 @@ import java.util.ArrayList;
 /**
  *
  * @author MrMurdoc
+ * @author Elfa1
  */
 public class Pessoa {
-    
-    //O matheus da muito a bunda
-    
-    private String nome;
-    private ArrayList<Tarefa> tarefas = new ArrayList<>();
-
+    /**
+     * Instanciamos os objetos Nome e Lista 
+     * Sendo ArrayLista como uma lista de tarefas
+     */
+    private String nome; //atributo nome
+    private ArrayList<Tarefa> tarefas = new ArrayList<>(); //lista de tarefas ou vetor tarefas
+    /**
+     * Iniciação dos metodos getters e setters
+     * @return 
+     */
     public String getNome() {
         return nome;
     }

@@ -1,20 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aplicação;
 
 /**
  *
  * @author MrMurdoc
+ * @author Elfa1
  */
 public class Horario {
-    
+    /**
+     * Instaciando os atributos do objeto
+     */
     private int hora;
     private int minuto;
     private int segundo;
-
+    /**
+     * Obtendo os metodos getters e setters
+     * @return 
+     */
     public int getHora() {
         return hora;
     }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aplicação;
 
 import java.util.Date;
@@ -10,15 +5,21 @@ import java.util.Date;
 /**
  *
  * @author MrMurdoc
+ * @author Elfa1
  */
 public class Tarefa {
-    
+    /**
+     * Instaciamos os atibutos do obejto tarefa.
+     */
     private String nome;
     private String descricao;
     private boolean feita;
     private Date data;
     private Horario horario;
-
+    /**
+     * Iniciando os metodos getters e setters
+     * @return 
+     */
     public String getNome() {
         return nome;
     }

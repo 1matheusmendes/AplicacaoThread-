@@ -1,11 +1,12 @@
 /**
- * Aplicação criada com ajuda de Henrique-dev
+ *Aplicação criada com ajuda de Henrique-dev
  *https://github.com/henrique-dev 
  */
 package aplicação;
 /**
  *
  * @author MrMurdoc
+ * @author Elfa1
  */
 public class Aplicação {
 

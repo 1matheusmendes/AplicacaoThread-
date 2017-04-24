@@ -10,8 +10,9 @@ import java.util.ArrayList;
 /**
  *
  * @author MrMurdoc
+ * @author Elfa1
  */
-public class MainThread {
+public class MainThread extends Thread {
     
     private boolean rodando;
     ArrayList<Tarefa> ListaTarefas = new ArrayList<> ();
@@ -36,6 +37,7 @@ public class MainThread {
         
     }
     
+    @Override
     public void run(){
         
     }
