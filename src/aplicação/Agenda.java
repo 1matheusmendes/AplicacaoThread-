@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aplicação;
 
 import java.util.ArrayList;
@@ -10,6 +5,7 @@ import java.util.ArrayList;
 /**
  *
  * @author MrMurdoc
+ * @author Elfa1
  */
 public class Agenda{
     
@@ -41,17 +37,20 @@ public class Agenda{
         this.listaPessoas.add(pessoa);
     }
     
-    public void adicionarTarefa(Tarefa tarefa){    
+    public void adicionarTarefa(Tarefa tarefa){
+        this.listaTarefas.add(tarefa);
     }
     
     public void removerPessoa(Pessoa pessoa){
+        this.listaPessoas.add(pessoa);
     }
     
-    public void removerTareda (Tarefa tarefa){
+    public void removerTarefa (Tarefa tarefa){
+        this.listaTarefas.remove(tarefa);
     }
     
     public void atribuirTarefa(Pessoa pessoa ,Tarefa tarefa){
-        
+        this.listaTarefas.remove(tarefa);
     }
     
 }
