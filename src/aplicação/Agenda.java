@@ -9,8 +9,8 @@ import java.util.ArrayList;
  */
 public class Agenda{
     
-    ArrayList<Pessoa> listaPessoas;
-    ArrayList<Tarefa> listaTarefas;
+    private ArrayList<Pessoa> listaPessoas;
+    private ArrayList<Tarefa> listaTarefas;
     
     public Agenda(){
         this.listaPessoas = new ArrayList<Pessoa>();
@@ -49,8 +49,23 @@ public class Agenda{
         this.listaTarefas.remove(tarefa);
     }
     
-    public void atribuirTarefa(Pessoa pessoa ,Tarefa tarefa){
-        this.listaTarefas.remove(tarefa);
+    public void atribuirTarefa(Pessoa pessoa ,Tarefa tarefa){                                        
+        // Verifica se a pessoa existe na lista
+        if(this.listaPessoas.contains(pessoa)){
+            // Verifica se a pessoa já executa a tarefa
+            if (this.listaPessoas.get( this.listaPessoas.indexOf(pessoa) ).getTarefas().contains(tarefa)){
+                System.out.println("Esta pessoa já executa esta tarefa");
+                return;
+            }            
+            // Caso esteja tudo ok, a tarefa é adicionada para a pessoa.
+            this.listaPessoas.get( this.listaPessoas.indexOf(pessoa) ).getTarefas().add(tarefa);            
+            // Adiciona a tarefa na lista de busca da thread
+            MainThread.getInstance().adicionarTarefa(tarefa);            
+            // Remove a tarefa da lista da agebda.
+            this.listaTarefas.remove(tarefa);            
+        }
+        else
+            System.out.println("Esta pessoa não existe");                
     }
     
 }
