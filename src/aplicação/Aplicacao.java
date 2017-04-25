@@ -7,6 +7,8 @@ package aplicação;
 import java.awt.Button;
 import java.awt.FlowLayout;
 import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.swing.JFrame;
@@ -16,8 +18,9 @@ import javax.swing.JFrame;
  * @author MrMurdoc
  * @author Elfa1
  */
-public class Aplicacao extends JFrame implements WindowListener{
+public class Aplicacao extends JFrame implements WindowListener, ActionListener{
     
+    private Gerenciador gerenciador;
     TextField campoTexto;
     Button botao;
 
@@ -29,9 +32,17 @@ public class Aplicacao extends JFrame implements WindowListener{
         addWindowListener(this);
         
         this.botao = new Button("Me clica por favor");
+        this.botao.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                botaoActionPerformed();
+            }
+        });
         this.add(botao);
         this.campoTexto = new TextField(20);
-        this.add(this.campoTexto);        
+        this.add(this.campoTexto);   
+        
+        
         
         
     }
@@ -43,6 +54,15 @@ public class Aplicacao extends JFrame implements WindowListener{
         tela.setVisible(true);
         
     }       
+    
+    public void botaoActionPerformed(){
+        
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        
+    }
 
     @Override
     public void windowOpened(WindowEvent e) {
