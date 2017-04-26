@@ -21,16 +21,19 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
     public TelaCadastroPessoa() {
         initComponents();
         
-        int larguraFrame = getWidth();
-        int alturaFrame = getHeight();
-        
-        setBounds(getScreenSize().width/2 - larguraFrame/2,
-                getScreenSize().height/2 - alturaFrame/2,
-                larguraFrame, alturaFrame);
+        this.centralizar();
     }
     
-    private Rectangle getScreenSize(){        
-        return new Rectangle(java.awt.Toolkit.getDefaultToolkit().getScreenSize());
+    /**Centraliza a janela em função da tela.
+     * 
+     */
+    private void centralizar(){        
+        int larguraFrame = getWidth();
+        int alturaFrame = getHeight();  
+        Rectangle tamanhoTela = new Rectangle(java.awt.Toolkit.getDefaultToolkit().getScreenSize());
+        setBounds(tamanhoTela.width/2 - larguraFrame/2,
+                tamanhoTela.height/2 - alturaFrame/2,
+                larguraFrame, alturaFrame);                
     }
 
     /**
@@ -92,6 +95,16 @@ public class TelaCadastroPessoa extends javax.swing.JFrame {
         Pessoa pessoa = new Pessoa();
         pessoa.setNome(jTextField1.getText());
         Gerenciador.getInstancia().getAgenda().adicionarPessoas(pessoa);
+        
+        new Thread(){
+            
+            @Override
+            public void run(){
+                Gerenciador.getInstancia().salvarDados();
+            }
+            
+        }.start();
+        
         new TelaPrincipal().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

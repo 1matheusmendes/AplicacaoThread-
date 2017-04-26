@@ -10,6 +10,7 @@ import aplicação.Pessoa;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
@@ -23,19 +24,29 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal() {
         initComponents();
         
-        initTable();
+        new Thread(){
+            
+            @Override
+            public void run(){
+                Gerenciador.getInstancia().lerDados();
+                initTable();
+            }
+            
+        }.start();
         
-        int larguraFrame = getWidth();
-        int alturaFrame = getHeight();                        
-        setBounds(getScreenSize().width/2 - larguraFrame/2,
-                getScreenSize().height/2 - alturaFrame/2,
-                larguraFrame, alturaFrame);
-        
-        
+        this.centralizar();
     }
     
-    private Rectangle getScreenSize(){        
-        return new Rectangle(java.awt.Toolkit.getDefaultToolkit().getScreenSize());
+    /**Centraliza a janela em função da tela.
+     * 
+     */
+    private void centralizar(){        
+        int larguraFrame = getWidth();
+        int alturaFrame = getHeight();  
+        Rectangle tamanhoTela = new Rectangle(java.awt.Toolkit.getDefaultToolkit().getScreenSize());
+        setBounds(tamanhoTela.width/2 - larguraFrame/2,
+                tamanhoTela.height/2 - alturaFrame/2,
+                larguraFrame, alturaFrame);                
     }
     
     private void initTable(){
@@ -46,13 +57,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tabela.addColumn("N de tarefas");
         
         for (Pessoa pessoa : Gerenciador.getInstancia().getAgenda().getListaPessoas()){
-            tabela.addRow( new String[]{ pessoa.getNome(), pessoa.getTarefas().size()+"" });
+            tabela.addRow( new String[]{ pessoa.getNome(), pessoa.getTarefas().size()+"" });            
         }                              
         
-        this.jTable2.setModel(tabela);
-        
-        
-        
+        this.jTable2.setModel(tabela);                        
     }
 
     /**
@@ -66,8 +74,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
 
@@ -86,10 +92,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-
-        jButton3.setText("Atribuir tarefa");
-
-        jButton4.setText("Excuir tarefa");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -117,15 +119,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -134,9 +131,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(12, Short.MAX_VALUE))
@@ -207,8 +202,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables

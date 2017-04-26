@@ -8,6 +8,7 @@ package telas;
 import aplicação.Gerenciador;
 import aplicação.Pessoa;
 import aplicação.Tarefa;
+import java.awt.Rectangle;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,7 +23,21 @@ public class TelaTarefas extends javax.swing.JFrame {
      * Creates new form TelaTarefas
      */
     public TelaTarefas() {
-        initComponents();                
+        initComponents();   
+        
+        this.centralizar();
+    }
+    
+    /**Centraliza a janela em função da tela.
+     * 
+     */
+    private void centralizar(){        
+        int larguraFrame = getWidth();
+        int alturaFrame = getHeight();  
+        Rectangle tamanhoTela = new Rectangle(java.awt.Toolkit.getDefaultToolkit().getScreenSize());
+        setBounds(tamanhoTela.width/2 - larguraFrame/2,
+                tamanhoTela.height/2 - alturaFrame/2,
+                larguraFrame, alturaFrame);                
     }
     
     private void initTable(){

@@ -60,4 +60,9 @@ public class Tarefa {
         this.horario = horario;
     }
     
+    @Override
+    public String toString(){
+        return nome + "-"  + descricao + "-" + feita + "-" + data + "-" + horario;
+    }
+    
 }

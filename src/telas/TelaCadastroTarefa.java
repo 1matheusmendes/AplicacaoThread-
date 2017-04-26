@@ -20,28 +20,27 @@ public class TelaCadastroTarefa extends javax.swing.JFrame {
      * Creates new form TelaCadastroTarefa
      */
     public TelaCadastroTarefa() {
-        initComponents();
-        
-        
-        int larguraFrame = getWidth();
-        int alturaFrame = getHeight();                        
-        setBounds(getScreenSize().width/2 - larguraFrame/2,
-                getScreenSize().height/2 - alturaFrame/2,
-                larguraFrame, alturaFrame);
+        initComponents();                        
         
         jComboBox1.removeAllItems();  
-        
-        
-        
+                        
         for (Pessoa pessoa : Gerenciador.getInstancia().getAgenda().getListaPessoas()){
             jComboBox1.addItem( pessoa.getNome() );                        
         }               
         
-        
+        this.centralizar();
     }
     
-    private Rectangle getScreenSize(){        
-        return new Rectangle(java.awt.Toolkit.getDefaultToolkit().getScreenSize());
+    /**Centraliza a janela em função da tela.
+     * 
+     */
+    private void centralizar(){        
+        int larguraFrame = getWidth();
+        int alturaFrame = getHeight();  
+        Rectangle tamanhoTela = new Rectangle(java.awt.Toolkit.getDefaultToolkit().getScreenSize());
+        setBounds(tamanhoTela.width/2 - larguraFrame/2,
+                tamanhoTela.height/2 - alturaFrame/2,
+                larguraFrame, alturaFrame);                
     }
 
     /**
@@ -135,7 +134,16 @@ public class TelaCadastroTarefa extends javax.swing.JFrame {
             if (pessoa.getNome().equals(jComboBox1.getSelectedItem())){
                 pessoa.getTarefas().add(tarefa);
             }
-        }                                
+        }                      
+        
+        new Thread(){
+            
+            @Override
+            public void run(){
+                Gerenciador.getInstancia().salvarDados();
+            }
+            
+        }.start();
         
         //Gerenciador.getInstancia().getAgenda().adicionarTarefa(tarefa);
         new TelaPrincipal().setVisible(true);

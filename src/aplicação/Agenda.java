@@ -68,4 +68,9 @@ public class Agenda{
             System.out.println("Esta pessoa não existe");                
     }
     
+    @Override
+    public String toString(){
+        return listaPessoas.toString();
+    }
+    
 }

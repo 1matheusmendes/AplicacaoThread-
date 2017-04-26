@@ -38,6 +38,11 @@ public class Pessoa {
     public void setTarefas(ArrayList<Tarefa> tarefas) {
         this.tarefas = tarefas;
     }
+        
+    @Override
+    public String toString(){
+        return nome + tarefas.toString();
+    }            
     
     
 }
