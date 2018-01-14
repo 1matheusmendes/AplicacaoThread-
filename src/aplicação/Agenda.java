@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class Agenda{
     
-    private ArrayList<Pessoa> listaPessoas;
+    private ArrayList<Pessoa> listaPessoas; //Criação de uma lista de pessoas 
     private ArrayList<Tarefa> listaTarefas;
     
     public Agenda(){
